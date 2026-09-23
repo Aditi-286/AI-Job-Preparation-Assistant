@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>
+            👋 Welcome, {{ user["name"] }}
+        </h1>
+
+
+        <p class="subtitle">
+            Your personalized placement dashboard
+        </p>
+
+
+        <h2>
+            Career Profile
+        </h2>
+
+
+        <form
+            action="/profile"
+            method="POST"
+        >
+
+            <label>
+                Target Job
+            </label>
+
+            <input
+                type="text"
+                name="job"
+                value="{{ user['target_job'] or '' }}"
+                placeholder="e.g. Backend Developer"
+                required
+            >
+
+
+            <label>
+                Current Skills
+            </label>
+
+            <input
+                type="text"
+                name="skills"
+                value="{{ user['skills'] or '' }}"
+                placeholder="Python, SQL, Flask..."
+                required
+            >
+
+
+            <label>
+                Education
+            </label>
+
+            <input
+                type="text"
+                name="education"
+                value="{{ user['education'] or '' }}"
+                placeholder="MCA"
+                required
+            >
+
+
+            <button type="submit">
+                Save Career Profile
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            🧠 AI Career Preparation
+        </h2>
+
+        <p>
+            Generate a personalized roadmap and skill-gap analysis.
+        </p>
+
+
+        <form
+            action="/generate-plan"
+            method="POST"
+        >
+
+            <button type="submit">
+                Generate AI Preparation Plan
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            📊 Overall Progress
+        </h2>
+
+
+        <div class="overall-progress">
+
+            <div class="progress-bar">
+            </div>
+
+        </div>
+
+
+        <h2>
+            {{ overall }}%
+        </h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            📚 Update Your Progress
+        </h2>
+
+
+        <form
+            action="/update-progress"
+            method="POST"
+        >
+
+            <label>
+                DSA
+            </label>
+
+            <input
+                type="number"
+                name="dsa"
+                min="0"
+                max="100"
+                value="{{ progress['dsa'] }}"
+            >
+
+
+            <label>
+                Python
+            </label>
+
+            <input
+                type="number"
+                name="python"
+                min="0"
+                max="100"
+                value="{{ progress['python'] }}"
+            >
+
+
+            <label>
+                SQL
+            </label>
+
+            <input
+                type="number"
+                name="sql"
+                min="0"
+                max="100"
+                value="{{ progress['sql'] }}"
+            >
+
+
+            <label>
+                OOP
+            </label>
+
+            <input
+                type="number"
+                name="oop"
+                min="0"
+                max="100"
+                value="{{ progress['oop'] }}"
+            >
+
+
+            <label>
+                DBMS
+            </label>
+
+            <input
+                type="number"
+                name="dbms"
+                min="0"
+                max="100"
+                value="{{ progress['dbms'] }}"
+            >
+
+
+            <label>
+                Projects
+            </label>
+
+            <input
+                type="number"
+                name="projects"
+                min="0"
+                max="100"
+                value="{{ progress['projects'] }}"
+            >
+
+
+            <label>
+                Interview Preparation
+            </label>
+
+            <input
+                type="number"
+                name="interview"
+                min="0"
+                max="100"
+                value="{{ progress['interview'] }}"
+            >
+
+
+            <button type="submit">
+                Save Progress
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

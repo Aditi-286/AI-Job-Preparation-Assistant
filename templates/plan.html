@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+AI Preparation Plan
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>
+            🧠 AI Preparation Plan
+        </h1>
+
+
+        <div class="ai-output">
+
+            {{ plan | replace('\n', '<br>') | safe }}
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>
+            🎯 Skill Gap Analysis
+        </h2>
+
+
+        <div class="ai-output">
+
+            {{ skill_gap | replace('\n', '<br>') | safe }}
+
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <a
+            class="button-link"
+            href="/dashboard"
+        >
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

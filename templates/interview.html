@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block title %}
+AI Interview Coach
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+    <div class="card">
+
+        <h1>
+            🎤 AI Interview Coach
+        </h1>
+
+        <p class="subtitle">
+            Practice technical interview questions.
+        </p>
+
+
+        <form
+            action="/generate-question"
+            method="POST"
+        >
+
+            <button type="submit">
+                Generate Interview Question
+            </button>
+
+        </form>
+
+    </div>
+
+
+    {% if question %}
+
+    <div class="card">
+
+        <h2>
+            Interview Question
+        </h2>
+
+
+        <div class="question-box">
+
+            {{ question }}
+
+        </div>
+
+
+        <form
+            action="/evaluate-answer"
+            method="POST"
+        >
+
+            <label>
+                Your Answer
+            </label>
+
+
+            <textarea
+                name="answer"
+                rows="8"
+                placeholder="Write your answer here..."
+                required
+            ></textarea>
+
+
+            <button type="submit">
+                Get AI Feedback
+            </button>
+
+        </form>
+
+    </div>
+
+    {% endif %}
+
+
+    {% if feedback %}
+
+    <div class="card">
+
+        <h2>
+            🤖 AI Feedback
+        </h2>
+
+
+        <div class="ai-output">
+
+            {{ feedback | replace('\n', '<br>') | safe }}
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
